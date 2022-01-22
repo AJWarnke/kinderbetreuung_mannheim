@@ -1,76 +1,30 @@
 library(lubridate)
 library(RColorBrewer)
 #
+source("function_plot.R")
+#
 data = read.table("data.txt", sep = "\t", header = TRUE)
 data$date = as.POSIXct(data$date, "%d.%m.%Y", tz = "Europe/Berlin")
 #
 lindenhof = data[which(data$place == "Lindenhof"), ]
 mannheim = data[which(data$place == "Mannheim"), ]
 #
-plot(lindenhof$date, rep(NA, nrow(lindenhof)), ylim = c(0, 70), xaxt = "n", yaxt = "n", xlab = "", ylab = "Anzahl Kinder", yaxs = "i")
-mtext("Öffentliche Betreuungssituation im Krippe-Bereich: Lindenhof", line = 2.5, cex = 1.5)
-mtext("Quelle: Stadt Mannheim", line = .85, cex = 1.15)
-axis(1, format(lindenhof$date, "%h"), at = lindenhof$date, las = 2)
-for(i in unique(format(lindenhof$date, "%Y"))) {
-    #mtext(i, side = 1, line = 3, at = as.POSIXct(paste0(i, "-04-01"), tz = "Europe/Berlin"), cex = 1.2)
-    text(as.POSIXct(paste0(i, "-07-01"), tz = "Europe/Berlin"), 0, as.numeric(i), pos = 3, cex = 1.15)
-}
+plot_voe(filename = "Versorgungsquote_Krippe", 
+         title = "Versorgungsquote Krippen Mannheim (U3)", 
+         subtitle = "Quelle: Stadt Mannheim",
+         ts1 = lindenhof$Krippe.VQ,
+         ts2 = mannheim$Krippe.VQ,
+         title_ts1 = "Lindenhof",
+         title_ts2 = "Mannheim",
+         source = "Eigene Darstellung; Quelle: Dezernat III, Stadt Mannheim"
+)
 
-#
-axis(2, seq(0, 70, 10))
-abline(v = lindenhof[which(month(lindenhof$date)  == 1), "date"], col = "gray", lty = 3)
-abline(h = seq(0, 70, 10), col = "gray", lty = 3)
-lines(lindenhof$date, lindenhof$Krippe..versorgt., type = "b", pch = 16, lwd = 3, col = brewer.pal(3, "Set1")[3])
-lines(lindenhof$date, lindenhof$Krippe..unversorgt., type = "b", pch = 16, lwd = 3, col = brewer.pal(3, "Set1")[1])
-legend("top", c("Kinder ohne Betreuungsangebot", "Kinder mit Betreuungsangebot"), pch = 16, col = brewer.pal(3, "Set1")[c(1,3)], ncol = 2)
-
-
-
-
-plot(lindenhof$date, rep(NA, nrow(lindenhof)), ylim = c(0, 70), xaxt = "n", yaxt = "n", xlab = "", ylab = "Anzahl Kinder")
-mtext("Öffentliche Betreuungssituation", line = 2.5, cex = 1.5)
-mtext("Quelle: Stadt Mannheim", line = .85, cex = 1.15)
-axis(1, format(lindenhof$date, "%m.%Y"), at = lindenhof$date, las = 2)
-axis(2, seq(0, 70, 10))
-abline(v = lindenhof$date, col = "gray", lty = 3)
-abline(h = seq(0, 70, 10), col = "gray", lty = 3)
-lines(lindenhof$date, lindenhof$Krippe..versorgt., type = "b", pch = 16, lwd = 3, col = brewer.pal(3, "Set1")[3])
-lines(lindenhof$date, lindenhof$Krippe..unversorgt., type = "b", pch = 16, lwd = 3, col = brewer.pal(3, "Set1")[1])
-legend("top", c("Kinder in Betreuung", "Kinder ohne Betreuungsplatz"), pch = 16, col = brewer.pal(3, "Set1")[c(1,3)], ncol = 2)
-
-
-
-plot(lindenhof$date, rep(NA, nrow(lindenhof)), ylim = c(0, 100), xaxt = "n", yaxt = "n", xlab = "", ylab = "Anzahl Kinder")
-mtext("Öffentliche Betreuungssituation im Kingergartenbereich: Lindenhof", line = 2.5, cex = 1.5)
-mtext("Quelle: Stadt Mannheim", line = .85, cex = 1.15)
-axis(1, paste0(year(lindenhof$date),"/Q",quarter(lindenhof$date)), at = lindenhof$date, las = 2)
-abline(v = lindenhof$date, col = "gray", lty = 3)
-lines(lindenhof$date, lindenhof$Kindergarten..versorgt., type = "b", pch = 16, lwd = 3, col = brewer.pal(3, "Set1")[3])
-lines(lindenhof$date, lindenhof$Kindergarten..unversorgt., type = "b", pch = 16, lwd = 3, col = brewer.pal(3, "Set1")[1])
-legend("top", c("Kinder in Betreuung", "Kinder ohne Betreuungsplatz"), pch = 16, col = brewer.pal(3, "Set1")[c(1,3)], ncol = 2)
-
-png("Mannheim_Krippe.png", width = 800, height = 400, units = "px")
-    plot(mannheim$date, rep(NA, nrow(mannheim)), ylim = c(0, 800), xaxt = "n", yaxt = "n", xlab = "", ylab = "Anzahl Kinder")
-    mtext("Öffentliche Betreuungssituation Mannheim (U3)", line = 2.5, cex = 1.5)
-    mtext("Krippenalter; Quelle Stadt Mannheim", line = .85, cex = 1.15)
-    axis(1, format(mannheim$date, "%m.%Y"), at = mannheim$date, las = 2)
-    axis(2, seq(0, 3000, 100), las = 2)
-    abline(v = mannheim$date, col = "gray", lty = 3)
-    abline(h = seq(0, 3000, 50), col = "gray", lty = 3)
-    lines(mannheim$date, mannheim$Krippe..versorgt., type = "b", pch = 16, lwd = 3, col = brewer.pal(3, "Set1")[3])
-    lines(mannheim$date, mannheim$Krippe..unversorgt., type = "b", pch = 16, lwd = 3, col = brewer.pal(3, "Set1")[1])
-    legend("bottom", c("Kinder in Betreuung (U3)", "Kinder ohne Betreuungsplatz (U3, offiziell angefragt)"), pch = 16, col = brewer.pal(3, "Set1")[c(3,1)])
-dev.off() 
-
-png("Mannheim_Kindergarten.png", width = 800, height = 400, units = "px")
-    plot(mannheim$date, rep(NA, nrow(mannheim)), ylim = c(0, 1600), xaxt = "n", yaxt = "n", xlab = "", ylab = "Anzahl Kinder")
-    mtext("Ã–ffentliche Betreuungssituation Mannheim (Ãœ3)", line = 2.5, cex = 1.5)
-    mtext("Kindergartenalter; Quelle Stadt Mannheim", line = .85, cex = 1.15)
-    axis(1, format(mannheim$date, "%m.%Y"), at = mannheim$date, las = 2)
-    axis(2, seq(0, 3000, 200), las = 2)
-    abline(v = mannheim$date, col = "gray", lty = 3)
-    abline(h = seq(0, 3000, 150), col = "gray", lty = 3)
-    lines(mannheim$date, mannheim$Kindergarten..versorgt., type = "b", pch = 16, lwd = 3, col = brewer.pal(3, "Set1")[3])
-    lines(mannheim$date, mannheim$Kindergarten..unversorgt., type = "b", pch = 16, lwd = 3, col = brewer.pal(3, "Set1")[1])
-    legend("bottom", c("Kinder in Betreuung (Ãœ3)", "Kinder ohne Betreuungsplatz (Ãœ3, offiziell angefragt)"), pch = 16, col = brewer.pal(3, "Set1")[c(3,1)])
-dev.off()    
+plot_voe(filename = "Versorgungsquote_Kindergarten", 
+         title = "Versorgungsquote Kindergarten Mannheim (Ü3)", 
+         subtitle = "Quelle: Stadt Mannheim",
+         ts2 = lindenhof$Kindergarten.VQ,
+         ts1 = mannheim$Kindergarten.VQ,
+         title_ts2 = "Lindenhof",
+         title_ts1 = "Mannheim",
+         source = "Eigene Darstellung; Quelle: Dezernat III, Stadt Mannheim"
+)
