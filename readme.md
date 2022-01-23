@@ -1,6 +1,6 @@
 # Kinderbetreuungssituation in Mannheim
 
-Eine Übersicht der Kinderbetreuungssituation im Krippen- und Kindergartenalter in Mannheim basierend auf Daten der Stadt Mannheim.
+Eine Übersicht der Kinderbetreuungssituation im Krippen- und Kindergartenalter in Mannheim und im Lindenhof basierend auf Daten der Stadt Mannheim.
 
 ## Quelle
 
