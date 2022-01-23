@@ -2,6 +2,16 @@
 
 Eine Übersicht der Kinderbetreuungssituation im Krippen- und Kindergartenalter über die Zeit in Mannheim und im Lindenhof basierend auf Daten der Stadt Mannheim.
 
+## Grafiken
+
+Siehe Unterordner 
+
+```
+Kinderbetreuung
+│
+└───Grafiken
+```
+
 ## Quelle
 
 Stadt Mannheim, Dezernat III, https://buergerinfo.mannheim.de/buergerinfo

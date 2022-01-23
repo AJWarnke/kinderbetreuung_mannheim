@@ -3,7 +3,7 @@ library(RColorBrewer)
 #
 source("function_plot.R")
 #
-data = read.table("data.txt", sep = "\t", header = TRUE)
+data = read.table("data_raw.txt", sep = "\t", header = TRUE)
 data$date = as.POSIXct(data$date, "%d.%m.%Y", tz = "Europe/Berlin")
 #
 lindenhof = data[which(data$place == "Lindenhof"), ]

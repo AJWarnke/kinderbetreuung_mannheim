@@ -5,7 +5,7 @@
 ###
 
 plot_voe = function(filename, title, subtitle, ts1, ts2, title_ts1, title_ts2, source) {
-  png(paste0(title, ".png"), width = 1200, height = 600, units = "px")
+  png(paste0("Grafiken/", title, ".png"), width = 1200, height = 600, units = "px")
     par(mar = c(4.5, 5.3, 4.1, 4.1))
     plot(mannheim$date, rep(NA, nrow(mannheim)), ylim = c(0, 100), xaxt = "n", yaxt = "n", xlab = "", ylab = "", yaxs = "i")
     mtext(title, line = 2.5, cex = 2)
