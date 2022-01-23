@@ -16,6 +16,14 @@ Kinderbetreuung
 
 Stadt Mannheim, Dezernat III, https://buergerinfo.mannheim.de/buergerinfo
 
+```
+Kinderbetreuung
+│data_raw.txt
+│
+└───Originalquelle
+```
+
+
 ## Autor
 
 Dr. Arne Warnke, arne.warnke@gmail.com, Telefon: 0176 21 62 52 60
