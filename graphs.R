@@ -11,7 +11,7 @@ mannheim = data[which(data$place == "Mannheim"), ]
 #
 plot_voe(filename = "Versorgungsquote_Krippe", 
          title = "Versorgungsquote Krippen Mannheim (U3)", 
-         subtitle = "Anteil Betreuungsplätze zu entsprechender Bevölkerungszahl",
+         subtitle = "Anteil BetreuungsplÃ¤tze zu entsprechender BevÃ¶lkerungszahl",
          ts1 = lindenhof$Krippe.VQ,
          ts2 = mannheim$Krippe.VQ,
          title_ts1 = "Lindenhof",
@@ -20,8 +20,8 @@ plot_voe(filename = "Versorgungsquote_Krippe",
 )
 
 plot_voe(filename = "Versorgungsquote_Kindergarten", 
-         title = "Versorgungsquote Kindergarten Mannheim (Ü3)", 
-         subtitle = "Anteil Betreuungsplätze zu entsprechender Bevölkerungszahl",
+         title = "Versorgungsquote Kindergarten Mannheim (Ãœ3)", 
+         subtitle = "Anteil BetreuungsplÃ¤tze zu entsprechender BevÃ¶lkerungszahl",
          ts2 = lindenhof$Kindergarten.VQ,
          ts1 = mannheim$Kindergarten.VQ,
          title_ts2 = "Lindenhof",

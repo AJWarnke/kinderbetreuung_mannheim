@@ -1,4 +1,28 @@
 date	place	Krippe (versorgt)	Krippe (unversorgt)	Kindergarten (versorgt)	Kindergarten (unversorgt)	Krippe VQ	Kindergarten VQ
+01.10.2024	Lindenhof					33.9	76.7
+01.10.2024	Mannheim					36.5	84.1
+01.07.2024	Lindenhof						
+01.07.2024	Mannheim						
+01.04.2024	Lindenhof						
+01.04.2024	Mannheim						
+01.01.2024	Lindenhof						
+01.01.2024	Mannheim						
+01.10.2023	Lindenhof						
+01.10.2023	Mannheim						
+01.07.2023	Lindenhof					35.5	76.9
+01.07.2023	Mannheim					34.2	85.0
+01.04.2023	Lindenhof					35.9	76.9
+01.04.2023	Mannheim					34.2	84.9
+01.01.2023	Lindenhof					35.9	76.9
+01.01.2023	Mannheim					34.1	84.7
+01.10.2022	Lindenhof					36.7	76.5
+01.10.2022	Mannheim					34	84.2
+01.07.2022	Lindenhof					37.6	76.5
+01.07.2022	Mannheim					34	85.1
+01.04.2022	Lindenhof					39.6	76.5
+01.04.2022	Mannheim					33.5	84.8
+01.01.2022	Lindenhof					36.5	76.5
+01.01.2022	Mannheim					33.6	84.5
 01.10.2021	Lindenhof	28	43	98	46	39	56.5
 01.10.2021	Mannheim	621	513	1169	993	33.8	83.6
 01.07.2021	Lindenhof	29	69	48	74	38.4	56.5
